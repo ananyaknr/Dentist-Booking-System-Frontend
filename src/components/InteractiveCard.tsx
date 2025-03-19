@@ -1,30 +1,17 @@
 'use client'
+import React from 'react';
 
-import React from "react";
+export default function InteractiveCard({children,contentName}: 
+    {children: React.ReactNode, contentName:string}){
 
-export default function InteractiveCard({children, contentName}:{children:React.ReactNode, contentName:string}){
-    
-    function onCardSelected(){
-        // alert('Card is clicked');
-        alert('You select '+contentName);
-    }
-
-    function onCardMouseAction(event:React.SyntheticEvent){
-        if(event.type == 'mouseover'){
-            event.currentTarget.classList.remove('shadow-lg');
-            event.currentTarget.classList.add('shadow-2xl');
-        }else{
-            event.currentTarget.classList.remove('shadow-2xl');
-            event.currentTarget.classList.add('shadow-lg');
-        }
-    }
-    
-    return(
-        <div className='w-full h-[300px] rounded-lg shadow-lg' 
-        // onClick={()=>onCardSelected()}
-        onMouseOver={(e)=>onCardMouseAction(e)}
-        onMouseOut={(e)=>onCardMouseAction(e)}>
-            {children}
+    return (
+        <div className="rounded-lg bg-white w-full shadow-lg 
+        transition-transform transform 
+        hover:scale-105 
+        hover:bg-neutral-200 
+        hover:shadow-xl duration-300 ease-in-out cursor-pointer">
+      
+        {children}
         </div>
     );
 }

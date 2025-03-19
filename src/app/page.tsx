@@ -1,17 +1,11 @@
-import Image from "next/image";
-import Banner from "@/components/Banner";
-import ProductCard from "@/components/ProductCard";
+import Banner from '@/components/Banner';
 import styles from "./page.module.css";
-// import CarPanel from "@/components/CarPanel";
-import { TravelCard } from "@/components/TravelCard";
 
 export default function Home() {
+
   return (
-    <main>
-      <div>
-        <Banner></Banner>
-        <TravelCard></TravelCard>
-      </div>
+    <main className={styles.main}>
+        <Banner/>
     </main>
   );
 }

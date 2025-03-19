@@ -1,35 +1,54 @@
-import styles from './topmenu.module.css'
-import Image from 'next/image';
-import TopMenuItem from './TopMenuItem';
-import { getServerSession } from 'next-auth'
-import { authOptions } from '../app/api/auth/[...nextauth]/authOptions';
-import Link from 'next/link';
+import Image from "next/image";
+import TopMenuItem from "./TopMenuItem";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 export default async function TopMenu(){
 
-    const session = await getServerSession(authOptions)
+const session = await getServerSession(authOptions)
+    return (
+        <div className="h-12 bg-primary fixed top-0 left-0 right-0 z-20 flex items-center shadow-md font-semibold">
+            <Link href={'/'}>
+              <Image className="m-4 ml-7"
+                src = '/img/home.png'
+                alt = "logo"
+                width= {28}
+                height = {30}
+            />
+            </Link> 
+            <TopMenuItem title="Dentist" pageRef="/dentist"/>
+            <TopMenuItem title="Booking" pageRef="/booking"/>
+            <TopMenuItem title="Appointment" pageRef={"/appointment"}/>
+                   
 
-    return(
-        <div className={styles.menucontainer}>
-            <Image src={'/img/logo.png'} className={styles.logoimg} alt='logo' width={0} height={0} sizes='100vh'></Image>
-            <TopMenuItem title='Select Car' pageRef='/car'/>
-            <TopMenuItem title='Reservations' pageRef='/reservations'></TopMenuItem>
-            <TopMenuItem title='About' pageRef='/about'></TopMenuItem>
-
-            <div className='flex flex-row absolute right-0 h-full'>
-            <TopMenuItem title='Cart' pageRef='/cart'/>
-            {
-                session ? 
-                    <Link href="/api/auth/signout">
-                    <div className='flex items-center h-full px-2 text-cyan-600 text-sm'>
-                        Sign-Out of {session.user?.name} 
-                    </div></Link>
-                : <Link href="/api/auth/signin">
-                    <div className='flex items-center h-full px-2 text-cyan-600 text-sm'>
-                        Sign-In
-                    </div></Link>
-            }
+            <div className="flex justify-end items-center absolute right-0 top-0 h-full pr-8 text-white">
+            {session ? (
+                <Link href="/api/auth/signout?callbackUrl=/">
+                <div className="cursor-pointer">
+                    Sign-Out of {session.user?.data.name}
+                </div>
+                </Link>
+            ) : (
+                <div className="flex space-x-5">
+                <Link href="/api/auth/signin">
+                    <div className="cursor-pointer">
+                    Sign-In
+                    </div>
+                </Link>
+                <Link href="/register">
+                    <div className="cursor-pointer">
+                    Register
+                    </div>
+                </Link>
+                </div>
+            )}
             </div>
+            
+            
+           
+
+
         </div>
     );
 }

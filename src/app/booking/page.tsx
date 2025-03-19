@@ -1,50 +1,45 @@
-'use client'
-
-import { useSearchParams } from "next/navigation";
 import { TextField,Select, MenuItem,FormLabel } from "@mui/material";
 import DateReserve from '@/components/DateReserve';
 import { getServerSession } from "next-auth";
 import getUserProfile  from "@/libs/getUserProfile";
-import { useState } from "react";
-import dayjs, { Dayjs } from "dayjs";
-import { useDispatch, UseDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
-import { ReservationItem } from "../../../interfaces";
-import { addReservation } from "@/redux/features/cartSlice";
+import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 
-export default function Reservation() {
+export default async function Booking() {
 
-    const urlParams = useSearchParams()
-    const vid = urlParams.get('id')
-    const name = urlParams.get('name')
+    const session = await getServerSession(authOptions)
+    if(!session||!session.user.token)return null
 
-    const dispatch = useDispatch<AppDispatch>()
-
-    const makeReservation = ()=>{
-        if(vid && name && date){
-            const item :ReservationItem = {
-                    venueId: vid,
-                    venueName: name,
-                    date: dayjs(date).format("YYYY/MM/DD"),
-                    name: "me",
-                    tel: "0000000000"
-                  
-            }
-            dispatch(addReservation(item))
-            alert("you book the venue")
-            console.log(item)
-        }
-    }
-
-    const [date,setDate] = useState<Dayjs|null>(null);
-    
+    const profile = await getUserProfile(session.user.token);
+    var createdAt = new Date(profile.data.createdAt);
 
     return (
         <div className="flex flex-col">
-          
+            <div className="bg-slate-100 px-20 pt-5 pb-6">
+                <h1 className="font-bold text-3xl mb-2">{profile.data.name}</h1>
+                <table className=" table-auto border-separte border-spacing-4">
+                    <tbody>
+                        <tr>
+                            <td className="font-semibold">Name</td>
+                            <td className="px-5">{profile.data.name}</td>
+                        </tr>
+                        <tr>
+                            <td className="font-semibold">Email</td>
+                            <td className="px-5">{profile.data.email}</td>
+                        </tr>
+                        <tr>
+                            <td className="font-semibold">Tel.</td>
+                            <td className="px-5">{profile.data.tel}</td>
+                        </tr>
+                        <tr>
+                            <td className="font-semibold">Member Since</td>
+                            <td className="px-5">{createdAt.toString()}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div className="flex flex-col  h-screen gap-8 w-1/4 mx-auto mt-10">
-                <h2 className="text-4xl font-bold">Booking {name} venue</h2>
+                <h2 className="text-4xl font-bold">Booking</h2>
 
                             <TextField
                             id="name"
@@ -71,11 +66,9 @@ export default function Reservation() {
                             </Select>
                             </div>
                             
-                            <DateReserve onDateChange={(value:Dayjs)=>{setDate(value)}}/>
+   
 
-
-
-                            <button  onClick={makeReservation}
+                            <button 
                     name="Book Venue"
                     className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-all duration-300"
                 >

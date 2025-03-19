@@ -1,37 +1,48 @@
 'use client'
-import styles from './banner.module.css'
-import Image from 'next/image'
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import Image from "next/image";
+import styles from './banner.module.css';
+import { useRouter } from "next/navigation";
+import { useState ,useEffect} from "react";
+import { useSession } from "next-auth/react";
 
-export default function Banner (){
-    const covers = ['/img/cover.jpg','/img/cover2.jpg','/img/cover3.jpg'];
-    const [index, setIndex] = useState(0);
+export default function Banner () {
+
     const router = useRouter();
-    
-    const { data: session } = useSession()
-    console.log(session?.user.token)
+    const coverImg = ['/img/cover.jpg', '/img/cover2.jpg','/img/cover3.jpg','/img/cover4.jpg'];
+    const [picNum,setPicNum] = useState(0);
 
-    return(
-        <div className={styles.banner} onClick={()=>{setIndex(index+1);}}>
-            <Image src={covers[index%3]} alt='cover' fill={true} className='object-cover' priority></Image>
-            <div className={styles.bannerText}>
-                <h1 className='text-3xl font-medium'>Your Travel Partner</h1>
-                <h3 className='text-xl font-serif'>Explore Your World with Us</h3>
-            </div>
+    const {data:session} = useSession();
 
-            {
-                session? 
-                    <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-800 text-xl'>
-                    Hello {session.user?.name}</div> 
-                : null
-            }
 
-            <button className='bg-white text-cyan-600 border border-cyan-600 font-semibold py-2 px-2 m-2 rounded z-30 absolute bottom-0 right-0 hover:bg-cyan-600 hover:text-white hover:border-transparent'
-            onClick={(e)=>{ e.stopPropagation(); router.push('/car')}}>
-                Select Your Travel Partner NOW
-            </button>
+    return (
+
+        <div className={styles.banner}>
+            <Image className= {styles.cover} 
+            src={coverImg[picNum]}
+            alt="cover"
+            fill = {true}
+            objectFit="cover"
+            onClick={()=>{
+                setPicNum((picNum+1)%4)
+            }}/>
+        <h1>where every smile finds its care</h1>
+        <p>Book your perfect dental appointment effortlessly and keep your smile shining bright!</p>
+
+        {
+            session? <div className="z-50 absolute top-8 right-10 text-cyan-400 text-3xl font-semibold">Welcome {session.user?.data.name}</div>
+            :null
+
+        }
+
+        <button className="p-3 px-6 m-4 z-30 rounded-lg absolute bottom-8 right-20 
+        bg-[#0D9488] text-white font-poppins text-xl shadow-lg 
+        hover:bg-[#0F766E] transition duration-300"
+        onClick={(e)=>{e.stopPropagation(); 
+        router.push('/dentist');}}>
+            Select Venue
+</button>
+
+
         </div>
-    )
+    );
 }

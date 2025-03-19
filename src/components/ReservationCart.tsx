@@ -1,25 +1,24 @@
-"use client"
-import { useAppSelector, AppDispatch } from "@/redux/store"
-import { useDispatch } from "react-redux"
+'use client'
+import { useAppSelector , AppDispatch} from "@/redux/store"
+import { useDispatch, UseDispatch } from "react-redux"
 import { removeReservation } from "@/redux/features/cartSlice"
-
-export default function ReservationCart() {
-
-    const carItems = useAppSelector( (state)=> state.cartSlice.carItems )
+export default function ResevervationCart(){
+    const  veneuItem = useAppSelector((state)=>state.cartSlice.venueItems)
+    //console.log ("map size:" + veneuItem.length)
     const dispatch = useDispatch<AppDispatch>()
+
     return (
         <>
         {
-            carItems.map((reservationItem)=>(
-                <div className="bg-slate-200 rounded px-5 mx-5 py-2 my-2" key={reservationItem.carId}>
-                    <div className="text-xl">{reservationItem.carModel}</div>
-                    <div className="text-sm">Pick-up {reservationItem.pickupDate} from {reservationItem.pickupLocation} </div>
-                    <div className="text-sm">Return {reservationItem.returnDate} to {reservationItem.returnLocation} </div>
-                    <div className="text-md">Duration: {reservationItem.numOfDays}</div>
-                    <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2  text-white shadow-sm" 
-                    onClick={()=> dispatch(removeReservation(reservationItem))} >
-                        Remove from Cart
-                    </button>
+            veneuItem.map((reservationItem)=>(
+                <div className="bg-slate-200 rounded p-5 m-2" 
+                key={reservationItem.venueId}>
+                    <div className="text-2xl">Venuen Name: {reservationItem.venueName}</div>
+                    <div className="text-2xl">Date: {reservationItem.date}</div>
+                    <div className="text-2xl">Name: {reservationItem.name}</div>
+                    <button className="block rounded-md bg-red-600 hover:bg-red:600 p-2 mt-2 text-white font-bold"
+                    onClick={()=>dispatch(removeReservation(reservationItem))}>Remove</button>
+
                 </div>
             ))
         }
