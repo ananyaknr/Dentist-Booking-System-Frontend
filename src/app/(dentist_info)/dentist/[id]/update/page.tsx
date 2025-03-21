@@ -52,6 +52,7 @@ const UpdateDentistPage = () => {
         const result = await updateDentist(formData._id, formData.name, formData.yearOfEx, formData.areaOfExpertise, token);  
         setMessage(`Dentist updated successfully!`);  
         setComplete(true);  
+        router.refresh();  
       } catch (error: any) {  
         setMessage(error.message);  
       }  
@@ -84,7 +85,7 @@ const UpdateDentistPage = () => {
             type="button"  
             onClick={() => router.push("/dentist")}  
             className="bg-blue-600 text-white p-3 rounded w-full mt-11 hover:bg-blue-800 shadow-xl hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-100">  
-            Back to Dentist List Page  
+            Back to Dentist Page  
           </button>  
         </div>  
       )}  
