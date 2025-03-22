@@ -37,7 +37,9 @@ export default function RegisterPage() {
               <form onSubmit={handleSubmit} className="flex flex-col space-y-4 rounded-lg w-full justify-center items-center pb-2">
                 <input type="text" name="name" placeholder="Name" onChange={handleChange} className="border p-3 rounded-lg w-3/4 shadow-md" required />
                 <input type="email" name="email" placeholder="Email" onChange={handleChange} className="border p-3 rounded-lg w-3/4 shadow-md" required />
-                <input type="text" name="tel" placeholder="Tel. (000-000-0000)" onChange={handleChange} className="border p-3 rounded-lg w-3/4 shadow-md" required />
+                <input type="tel" name="tel" placeholder="Tel. (000-000-0000)" onChange={handleChange} className="border p-3 rounded-lg w-3/4 shadow-md" required
+                        pattern="\d{3}-\d{3}-\d{4}"
+                        title="Phone number must be in the format 000-000-0000"/>
                 <input type="password" name="password" placeholder="Password" onChange={handleChange} className="border p-3 rounded-lg w-3/4 shadow-md" required />
                 <button
                   type="submit"
