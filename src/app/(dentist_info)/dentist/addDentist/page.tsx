@@ -3,7 +3,6 @@ export default function addDentistPage() {
   return (
     <div>
        <DentistForm ></DentistForm>
-
     </div>
     
   );
