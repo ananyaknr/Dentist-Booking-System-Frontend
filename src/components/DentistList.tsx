@@ -13,7 +13,7 @@ export default async function DentistList({ dentistsJson }: { dentistsJson: Prom
     return (
         <div className="mr-2 ml-2 ">
                
-                <h2 className="text-lg text-center m-1">
+               <h2 className="text-lg text-center m-1 font-semibold text-gray-500">
                      With {dentistJsonReady.count} specialists across various fields,</h2>
                 <h2 className="text-xl text-center font-bold mt-6">
                     you can choose the perfect expert for your needs.
