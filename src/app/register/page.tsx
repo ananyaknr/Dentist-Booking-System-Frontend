@@ -39,7 +39,7 @@ export default function RegisterPage() {
                 <input type="email" name="email" placeholder="Email" onChange={handleChange} className="border p-3 rounded-lg w-3/4 shadow-md" required />
                 <input type="tel" name="tel" placeholder="Tel. (000-000-0000)" onChange={handleChange} className="border p-3 rounded-lg w-3/4 shadow-md" required
                         pattern="\d{3}-\d{3}-\d{4}"
-                        title="Phone number must be in the format 000-000-0000"/>
+                        title="000-000-0000"/>
                 <input type="password" name="password" placeholder="Password" onChange={handleChange} className="border p-3 rounded-lg w-3/4 shadow-md" required />
                 <button
                   type="submit"
@@ -50,7 +50,7 @@ export default function RegisterPage() {
                 </button>
               </form>
               
-              {message && <p className="mt-4 text-green-500">{message}</p>}
+              {message && <p className="mt-4 text-red-500">{message}</p>}
             </div>: 
                 <div className="text-center">
                 <h1 className="mt-4 text-green-500">Your account has been created successfully!</h1>
