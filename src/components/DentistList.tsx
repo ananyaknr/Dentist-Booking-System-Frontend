@@ -21,8 +21,8 @@ export default async function DentistList({ dentistsJson }: { dentistsJson: Prom
 
 {session?.user.data.role==='admin'?
                 <Link href={'/dentist/addDentist'}>
-                <button  className="bg-teal-600 text-white p-2 rounded w-1/5 mt-8 mb-3 mx-auto mx-auto block
-                    hover:bg-teal-800 shadow-xl 
+                <button  className="bg-secondary text-white p-2 rounded w-1/5 mt-8 mb-3 mx-auto mx-auto block
+                    hover:bg-teal-600 shadow-xl 
                     hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-100">
                     add Dentist
                 </button>

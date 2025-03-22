@@ -60,7 +60,7 @@ export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any
                             <td className="px-5">{appt.dentist.name}</td>
                         </tr>
                         <tr>
-                            <td className="font-semibold">Paitient: </td>
+                            <td className="font-semibold">Patient: </td>
                             <td className="px-5">{appt.user.name}</td>
                         </tr>
                         <tr>

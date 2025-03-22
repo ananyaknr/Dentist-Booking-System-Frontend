@@ -36,7 +36,7 @@ export default function DateReserve({ onDateChange }: { onDateChange: (date: Day
                     value={date}
                     onChange={handleDateChange}
                     slots={{ openPickerIcon: CalendarTodayIcon }}
-                    sx={{ width: 300 }}
+        
                 />
                 {/* Time Picker */}
                 <TimePicker
@@ -45,7 +45,7 @@ export default function DateReserve({ onDateChange }: { onDateChange: (date: Day
                     onChange={handleTimeChange}
                     ampm={false} // Set to true for 12-hour format
                     slots={{ openPickerIcon: AccessTimeIcon }}
-                    sx={{ width: 300 }}
+              
                 />
             </LocalizationProvider>
         </div>
