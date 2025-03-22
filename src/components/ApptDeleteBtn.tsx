@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation"; 
 import deleteAppt from "@/libs/deleteAppt";
 
-export default function ApptDeleteBtn({ id, token }: { id: string; token: string }) {
+export default function ApptDeleteBtn({ id, token }: { id: string; token: any }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const router = useRouter();
 

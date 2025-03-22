@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
-export default function ApptUpdateBtn({ id, token }: { id: string; token: string }) {
+export default function ApptUpdateBtn({ id, token }: { id: string; token: any}) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [isClick, setIsClick] = useState(false);
   const router = useRouter();

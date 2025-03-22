@@ -6,7 +6,7 @@ import ApptDeleteBtn from "./ApptDeleteBtn";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
-export default function ApptList({ apptsJson,token }: { apptsJson: any,token:string }) {
+export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any }) {
 
     const router = useRouter();
     const [showing,setShowing] = useState("all")

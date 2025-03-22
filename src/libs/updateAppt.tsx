@@ -1,5 +1,5 @@
 
-export default async function  updateAppt(apptId:string,date:any,token:string) {
+export default async function  updateAppt(apptId:string,date:any,token:any) {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/appointments/${apptId}`,{
     
         method: "PUT",

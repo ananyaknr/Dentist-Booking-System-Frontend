@@ -4,7 +4,7 @@ import deleteDentist from "@/libs/deleteDentist";
 import { useState } from "react";
 import { useRouter } from "next/navigation"; 
 
-export default function DeleteButton({ id, token }: { id: string; token: string }) {
+export default function DeleteButton({ id, token }: { id: string; token: any}) {
   const [isDeleting, setIsDeleting] = useState(false);
   const router = useRouter();
 
