@@ -67,29 +67,29 @@ const FirstPage=()=>{
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
 
-      <div className="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <div className="p-6 border rounded-lg shadow hover:shadow-lg transition">
         <h3 className="text-xl font-semibold mb-2">Teeth Whitening</h3>
         <p className="text-sm text-gray-600">Brighten your smile in under an hour with our safe whitening treatments.</p>
       </div>
-      <div className="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <div className="p-6 border rounded-lg shadow hover:shadow-lg transition">
         <h3 className="text-xl font-semibold mb-2">Braces & Aligners</h3>
         <p className="text-sm text-gray-600">Straighten your teeth comfortably with our modern orthodontic solutions.</p>
       </div>
-      <div className="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <div className="p-6 border rounded-lg shadow hover:shadow-lg transition">
         <h3 className="text-xl font-semibold mb-2">Dental Implants</h3>
         <p className="text-sm text-gray-600">Permanent solutions for missing teeth using advanced implant techniques.</p>
       </div>
 
  
-      <div className="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <div className="p-6 border rounded-lg shadow hover:shadow-2xl transition">
         <h3 className="text-xl font-semibold mb-2">Root Canal Therapy</h3>
         <p className="text-sm text-gray-600">Relieve pain and save your natural teeth with expert root canal treatments.</p>
       </div>
-      <div className="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <div className="p-6 border rounded-lg shadow hover:shadow-2xl transition">
         <h3 className="text-xl font-semibold mb-2">Pediatric Dentistry</h3>
         <p className="text-sm text-gray-600">Gentle dental care for children, from first teeth to teens.</p>
       </div>
-      <div className="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <div className="p-6 border rounded-lg shadow hover:shadow-2xl transition">
         <h3 className="text-xl font-semibold mb-2">Dental Checkups & Cleaning</h3>
         <p className="text-sm text-gray-600">Routine exams and cleanings to keep your teeth healthy and strong.</p>
       </div>
